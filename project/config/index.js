@@ -13,8 +13,8 @@ module.exports = {
     proxyTable: {
       '/api': {
           // target: 'http://127.0.0.1:7035',//设置你调用的接口域名和端口号 别忘了加http
-          // target: 'https://prewx.qy-rgs.com',//设置你调用的接口域名和端口号 别忘了加http
-          target:'http://192.168.1.34:7035',
+          target: 'https://pre.qy-rgs.com:7035',//设置你调用的接口域名和端口号 别忘了加http
+          // target:'http://192.168.1.34:7035',
           // target: 'http://scenario.qy-rgs.com:9007',
           secure: false,
           changeOrigin: true,
