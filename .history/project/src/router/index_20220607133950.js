@@ -76,7 +76,7 @@
     {
       path:'/statOrder',
       name:'statOrder',
-      component:(resolve)=>require(['@/views/statisticalAnalysis/orderStatistics/index'],resolve),
+      component:(resolve)=>require(['@/views/statisticalAnalysis/tempCarAnalysis/index'],resolve),
       meta:{keepAlive:false},
     },
 
