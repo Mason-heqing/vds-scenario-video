@@ -6,9 +6,12 @@
         <!-- <small>Optional description</small> -->
       </h1>
       <ol class="breadcrumb">
-        <!-- <li>
-          <a href="/parkManager"> <i class="glyphicon glyphicon-home"></i> 首页 </a>
-        </li> -->
+        <li>
+          <a href="/"> <i class="glyphicon glyphicon-home"></i> 首页 </a>
+        </li>
+        <li class="active">
+          <i class="glyphicon glyphicon-adjust"></i> 统计报表
+        </li>        
         <li class="active">
           <i class="glyphicon glyphicon-adjust"></i> 订单统计
         </li>
@@ -121,42 +124,59 @@
           <div class="box-body">
                 <div class="row mt-30">
                   <div class="col-sm-12">
-                    <h4 class="pl-15">订单金额统计</h4>
-                  </div>
-                  <div class="col-sm-12">
                     <div
                     class="chart"
-                    id="parkingRevenue"
+                    ref="parkingRevenue"
                     style="height: 340px; padding-right: 10px"
                   ></div>
                   </div>
                 </div>
-                <table-cmp
-                  :table-data="listData"
-                  :table-label="tableLabel"
-                  ref="tableChild"
-                  :is-show-select="isShowSelect"
-                  @sortableChange="sortableChange"
-                >
-                </table-cmp>
+                <el-table
+                  :data="tableData"
+                  style="width: 100%"
+                  >
+                  <el-table-column
+                    prop="orgName"
+                    label="机构"
+                    width="150">
+                  </el-table-column>
+                  <el-table-column  :label="item.orderDay" v-for="(item,index) in secHeaderData" :key="index" align='center'>
+                          <el-table-column v-if="'专线包' == item.speciaName"
+                            :prop="item.spciaNameParam"
+                            :label="item.speciaName"
+                            width="120">
+                          </el-table-column>
+                          <el-table-column v-if="'激活包' == item.activateName"
+                            :prop="item.activateParam"
+                            :label="item.activateName"
+                            width="120">
+                          </el-table-column>  
+                    </el-table-column>
+                      
+                    <el-table-column
+                          prop="totalPrice"
+                          label="合计"
+                          width="150">
+                        </el-table-column>
+                </el-table>
               </div>
         </div>
       </div>
     </section>
   </div>
 </template>
-<script src="./tempCarAnalysis.js"></script>
+<script src="./orderStatistics.js"></script>
 <style scoped lang="scss">
-@import "./tempCarAnalysis.scss";
+@import "./orderStatistics.scss";
 .Summary{
     display: flex;
     justify-content: center;
     padding: 30px 0;
 }
-.el-table{
-  max-height: 200px;
-  overflow-y: scroll;
-}
+// .el-table{
+//   max-height: 200px;
+//   overflow-y: scroll;
+// }
 .custom-style{
   color: #0099FF;
   font-size: 22px;
